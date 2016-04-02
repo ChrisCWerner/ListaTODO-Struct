@@ -17,6 +17,8 @@ public class TestaFileManager {
 		Lista lista = new Lista();
 		TextConsole console = new TextConsole(lista);
 		FileManager fm = new FileManager();
+		
+		System.out.println("  *-*-* Teste 1 *-*-*");
 
 		console.inserirItem("item 1");
 		console.inserirItem("item 2");
@@ -50,6 +52,11 @@ public class TestaFileManager {
 		
 		System.out.println("\nPassou 3!\n");
 		
+//		Lista temp = new Lista();
+//		temp = fm.abrirLista("wasd");
+		
+//		Assert.assertFalse(temp == null);
+		
 		Assert.assertFalse(fm.listaExiste("Um Nome Aleatorio"));
 		try{
 			fm.abrirLista("Um Nome Aleatorio");
@@ -60,7 +67,29 @@ public class TestaFileManager {
 		
 	}
 	
-	
+	@Test
+	public void testaAbrirLista() throws FileException, OutOfBounds {
+		
+		Lista lista;
+		FileManager fm = new FileManager();
+
+		System.out.println("  *-*-* Teste 2 *-*-*");
+
+		Assert.assertTrue(fm.listaExiste("wasd"));
+		
+		System.out.println("\na) abrir lista: ");
+		
+		lista = fm.abrirLista("wasd");
+		
+		System.out.println("\nb) printa lista: ");
+		
+		lista.printaLista();
+		
+		
+		
+		
+		
+	}
 	
 	
 	

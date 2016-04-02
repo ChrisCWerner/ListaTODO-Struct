@@ -1,6 +1,7 @@
 package br.unb.struct.trainee.listaTodo;
 
-public class Item {
+@SuppressWarnings("serial")
+public class Item implements java.io.Serializable {
 
 	protected String item;
 	protected boolean done;

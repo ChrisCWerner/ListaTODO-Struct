@@ -7,12 +7,13 @@ import java.util.List;
 
 import br.unb.struct.trainee.listaTodo.OutOfBounds;
 
-public class Lista {
+@SuppressWarnings("serial")
+public class Lista implements java.io.Serializable {
 
 	private List<Item> lista;
 	public String nome;
 	
-	private static final String NOME_PADRAO = "Nova Lista TODO";
+	private static final transient String NOME_PADRAO = "Nova Lista TODO";
 	
 	public Lista(){
 		lista = new ArrayList<Item>();

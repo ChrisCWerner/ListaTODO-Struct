@@ -7,13 +7,10 @@ import java.nio.file.Paths;
 
 import br.unb.struct.trainee.listaTodo.FileException;
 
-@SuppressWarnings("serial")
-public class FileManager implements Serializable {
+public class FileManager {
 
 	private static final String THIS_DIR = System.getProperty("user.dir");
 	private static final Path LISTAS_DIR = Paths.get(THIS_DIR, "ListasTODO");
-	
-	
 	
 	public void inicializaDir() {
 		File f = new File(LISTAS_DIR.toString());
@@ -27,14 +24,14 @@ public class FileManager implements Serializable {
 			}
 	}
 	
-	private static final String addTdlsSuffix(String nome){
-		if(!nome.endsWith(".tdls"))
-			return nome + ".tdls";
+	private static final String addSerSuffix(String nome){
+		if(!nome.endsWith(".ser"))
+			return nome + ".ser";
 		return nome;
 	}
 	
 	public Path pathLista(String nome){
-		nome = addTdlsSuffix(nome);
+		nome = addSerSuffix(nome);
 		return Paths.get(LISTAS_DIR.toString(), nome);
 	}
 	
@@ -47,7 +44,7 @@ public class FileManager implements Serializable {
 	public void criaListaDefault(Lista lista) throws FileException{
 		
 		if(lista.getSize() == 0)	return;
-		if(this.listaExiste(lista.getNome()) && !lista.getNome().startsWith("Nova Lista TODO"))
+		if(listaExiste(lista.getNome()) && !lista.getNome().startsWith("Nova Lista TODO"))
 			throw new FileException("LJE");
 		
 		try{
@@ -73,9 +70,10 @@ public class FileManager implements Serializable {
 	
 	public void salvarNovaLista(Lista lista) throws FileException{
 		String nome = lista.getNome();
-		nome = addTdlsSuffix(nome);
+		nome = addSerSuffix(nome);
 		
-		if(listaExiste(nome))	throw new FileException("LJE");
+		if(listaExiste(nome) && !lista.getNome().startsWith("Nova Lista TODO"))
+			throw new FileException("LJE");
 		
 		try {
 			FileOutputStream fout = new FileOutputStream(LISTAS_DIR.toString() + "\\" + nome);
@@ -89,7 +87,7 @@ public class FileManager implements Serializable {
 	}
 	
 	public Lista abrirLista(String nome) throws FileException{
-		nome = addTdlsSuffix(nome);
+		nome = addSerSuffix(nome);
 		if(!listaExiste(nome)){
 			throw new FileException();
 		}
@@ -102,6 +100,8 @@ public class FileManager implements Serializable {
 				FileInputStream fin = new FileInputStream(pathLista(nome).toString());
 				ObjectInputStream ois = new ObjectInputStream(fin);
 				lista = (Lista) ois.readObject();
+					if(lista == null)
+						System.out.println("\n*\n*lista == null*\n*\n");
 				ois.close();
 			} catch(IOException e){
 				System.out.println("IOException!");

@@ -151,6 +151,9 @@ public class TextConsole implements UserInterface {
 	@Override
 	public void marcarFeito() {
 		int i;
+		
+		imprimirLista();
+		
 		do {
 			System.out.println("Digite o indice do item feito: ");
 			i = sc.nextInt();
@@ -219,6 +222,7 @@ public class TextConsole implements UserInterface {
 		} catch(OutOfBounds e){
 			System.out.println(e.getMessage());
 		}
+		System.out.println();
 	}
 
 	@Override
