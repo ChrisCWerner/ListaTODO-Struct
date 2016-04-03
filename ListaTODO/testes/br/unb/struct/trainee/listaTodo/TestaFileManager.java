@@ -18,7 +18,7 @@ public class TestaFileManager {
 		TextConsole console = new TextConsole(lista);
 		FileManager fm = new FileManager();
 		
-		System.out.println("  *-*-* Teste 1 *-*-*");
+		System.out.println("  *-*-* Teste 2 *-*-*");
 
 		console.inserirItem("item 1");
 		console.inserirItem("item 2");
@@ -72,26 +72,42 @@ public class TestaFileManager {
 		
 		Lista lista;
 		FileManager fm = new FileManager();
-
-		System.out.println("  *-*-* Teste 2 *-*-*");
-
-		Assert.assertTrue(fm.listaExiste("wasd"));
+		
+		System.out.println("  *-*-* Teste 3 *-*-*");
 		
 		System.out.println("\na) abrir lista: ");
 		
-		lista = fm.abrirLista("wasd");
+		lista = fm.abrirLista("Exemplo");
 		
 		System.out.println("\nb) printa lista: ");
 		
 		lista.printaLista();
 		
-		
-		
-		
-		
 	}
 	
-	
+	@Test
+	public void testaRenomearLista() throws FileException, OutOfBounds {
+		
+		Lista lista = new Lista();
+		FileManager fm = new FileManager();
+		TextConsole console = new TextConsole(lista);
+		
+		System.out.println("  *-*-* Teste 1 *-*-*");
+		
+		console.inserirItem("Um item");
+		console.salvarLista("Teste");
+		Assert.assertTrue(fm.listaExiste("Teste"));
+		
+		console.renomearUmaLista("Teste", "etseT");
+		Assert.assertEquals("etseT", lista.getNome());
+		
+		lista = fm.abrirLista("etseT");
+		Assert.assertEquals("etseT", lista.getNome());
+		
+		console.deletarUmaLista("etseT");
+		Assert.assertFalse(fm.listaExiste("etseT"));
+		
+	}
 	
 	
 	

@@ -272,22 +272,26 @@ public class TextConsole implements UserInterface {
 
 	@Override
 	public void deletarUmaLista() {
+		String nome, esse;
+		
 		System.out.println("Deseja deletar esta lista ou outra lista ja salva?");
 		System.out.println("[e] esta lista.");
 		System.out.println("[else] outra lista.");
 		
-		if(sc.nextLine().equals("e")){
+		if((esse = sc.nextLine()).equals("e"))
 			lista = new Lista();
-			return;
-		}
 		
 		do {
-			System.out.println("Digite o nome da lista que deseja deletar: ");
-			String nome = sc.nextLine();
-			if(nome.equals(".."))	return;
+			if(!esse.equals("e")){
+				System.out.println("Digite o nome da lista que deseja deletar: ");
+				nome = sc.nextLine();
+				if(nome.equals(".."))	return;
+			}
+			else	nome = esse;
 			
 			try{
-				fm.deletarLista(nome);
+				if(fm.listaExiste(nome))
+					fm.deletarLista(nome);
 				break;
 			} catch(FileException e){
 				System.out.println(e.getMessage());
@@ -348,7 +352,7 @@ public class TextConsole implements UserInterface {
 			temp = fm.abrirLista(antes);
 		} catch (FileException e) {
 			System.out.println(e.getMessage());
-			return;	//solicitar novo nome
+			return;
 		}
 		temp.setNome(depois);
 		try {
@@ -358,6 +362,8 @@ public class TextConsole implements UserInterface {
 		}
 		
 		deletarUmaLista(antes);
+		if(antes == lista.getNome())
+			lista.setNome(depois);
 	}
 	
 	@Override
