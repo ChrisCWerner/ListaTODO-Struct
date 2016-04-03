@@ -31,9 +31,4 @@ public class Item implements java.io.Serializable {
 	protected void setDone(){
 		done = true;
 	}
-	
-//	private void setDone(boolean done){
-//		this.setDone();
-//		this.done = done;
-//	}
 }

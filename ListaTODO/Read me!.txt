@@ -1,0 +1,85 @@
+Trainee: Christian Costa Werner
+
+Processo Trainee - Struct EJ
+Trabalho do módulo 1 - Implementar uma lista TODO
+
+                        
+                        --> Introdução <--                        
+
+    * Primeiramente, eu gostaria de agradecer à todos da Struct
+pelo investimento que vocês estão dando a nós, trainees. Todo esse
+esse material que vocês estão preparando, os trabalhos, as video-
+-aulas, o tempo que vocês tem disponibilizado a nós, só posso
+dizer: muito obrigado! Tenho certeza que o esforço de vocês não
+será em vão e eu realmente espero conseguir cobrir as expectativas
+que vocês tem em mim.
+
+
+    * Em relação ao trabalho em si, essa foi a minha primeira
+aplicação em Java. Escolhi essa linguagem porque nesse semestre
+estou pegando Programação Orientada a Objetos, e, para já praticar
+para a matéria, escolhi implementar esse trabalho em Java. Eu
+aprendi bastante ao fazer esse programa e acredito que esse foi o
+primeiro passo para uma longa jornada.
+
+                        --> O Trabalho <--                        
+
+    * Bom, vamos começar explicando meu raciocínio para esta
+aplicação. Pensei em criar dois objetos principais:
+        - 'Item': se refere ao menor elemento da lista, um item;
+        - 'Lista': o conjunto de itens formam uma lista.
+
+1. O 'Item' tem dois atributos: uma string 'item' e uma variável
+booleana 'done'. A string 'item' recebe o item em si e a variável
+booleana 'done' marca o estado atual do item ([TODO] ou [DONE]),
+com seus devidos getters e setters.
+
+2. A 'Lista' também tem dois atributos: uma array dinâmica 'lista'
+e uma string 'nome'. A array dinâmica 'lista' é uma lista de
+objetos 'Item' e a string 'nome' se refere ao nome da lista. Nesta
+classe, temos métodos para inserir, remover e reposicionar itens,
+além de printar na tela a própria lista.
+
+    Ambas as classes implementam a interface 'Serializable' de
+Java, que permite ler e escrever objetos em arquivos.
+
+
+    * Em seguida, nós temos a classe FileManager, que administra a
+leitura/escrita de arquivos de dentro desta aplicação. Nela se
+encontram métodos para inicializar o diretório, caso necessário,
+onde as listas serão salvas, para adicionar o sufixo '.ser' às
+listas, para verificar se uma determinada lista já existe e para
+criar, salvar, abrir, deletar e sobreescrever listas. A leitura/
+escrita de arquivos foi feita por meio da técnica de serialização
+de objetos com auxílio da interface 'Serializable' do io de Java.
+
+
+    * Tendo os métodos para a leitura e escrita de objetos, fui
+pensando na UI. De início, pensei em fazer tanto uma UI textual
+quanto uma GUI, por isso que tem uma interface chamada
+'UserInterface'. Entretanto, não tive tempo para implementar uma
+GUI, então ficou só a UI textual.
+
+
+    * Desse modo, na classe 'TextConsole', implementei métodos
+para a interação usuário-máquina via texto. O método que refere a
+todos e o principal para essa relação é o método de 'opcoes', que
+imprime na tela as opções para o usuário e chama os devidos
+métodos para cada opção. O método 'checaOpcoes' transforma a opção
+de string para inteiro. Os outros métodos fazem exatamente o que
+as opções dizem. A classe 'Main' basicamente só chama o método
+'opcoes'.
+
+
+    * Temos também duas classes de excessões, uma para indicar
+extrapolações na hora de acessar a lista e outra para indicar
+erros na leitura/escrita de arquivos.
+
+
+    * Por último, temos as classes de teste. A classe 'TestaLista'
+verifica se os métodos de lista estão funcionando corretamente e a
+classe 'TestaFileManager' testa a escrita/leitura de listas por
+meio da classe 'TextConsole'.
+
+
+                          --> Fim :D <--                          

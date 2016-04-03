@@ -311,7 +311,7 @@ public class TextConsole implements UserInterface {
 
 	@Override
 	public void renomearUmaLista() {;
-		Lista temp = new Lista();
+		Lista temp;
 		String antes, depois;
 		
 		do {
@@ -346,7 +346,7 @@ public class TextConsole implements UserInterface {
 
 	@Override
 	public void renomearUmaLista(String antes, String depois) {
-		Lista temp = new Lista();
+		Lista temp;
 		
 		try {
 			temp = fm.abrirLista(antes);
@@ -401,39 +401,29 @@ public class TextConsole implements UserInterface {
 
 	@Override
 	public int checaOpcoes(String opcao){
-		if(opcao.equals("1")){
-			return INSERIR_ITEM;
-		}
-		else if(opcao.equals("2")){
-			return REMOVER_ITEM;
-		}
-		else if(opcao.equals("3")){
-			return REPOSICIONAR_ITEM;
-		}
-		else if(opcao.equals("4")){
-			return MARCAR_FEITO;
-		}
-		else if(opcao.equals("5")){
-			return SALVAR_LISTA;
-		}
-		else if(opcao.equals("6")){
-			return IMPRIMIR_LISTA;
-		}
-		else if(opcao.equals("7")){
-			return CRIAR_NOVA_LISTA;
-		}
-		else if(opcao.equals("8")){
-			return ABRIR_LISTA;
-		}
-		else if(opcao.equals("9")){
-			return DELETAR_UMA_LISTA;
-		}
-		else if(opcao.equals("10")){
-			return RENOMEAR_UMA_LISTA;
-		}
-		else if(opcao.equals("0")){
-			return SAIR;
-		}
+		
+		if(opcao.equals("1"))		return INSERIR_ITEM;
+		
+		else if(opcao.equals("2"))	return REMOVER_ITEM;
+		
+		else if(opcao.equals("3"))	return REPOSICIONAR_ITEM;
+		
+		else if(opcao.equals("4"))	return MARCAR_FEITO;
+		
+		else if(opcao.equals("5"))	return SALVAR_LISTA;
+		
+		else if(opcao.equals("6"))	return IMPRIMIR_LISTA;
+		
+		else if(opcao.equals("7"))	return CRIAR_NOVA_LISTA;
+		
+		else if(opcao.equals("8"))	return ABRIR_LISTA;
+		
+		else if(opcao.equals("9"))	return DELETAR_UMA_LISTA;
+		
+		else if(opcao.equals("10"))	return RENOMEAR_UMA_LISTA;
+		
+		else if(opcao.equals("0"))	return SAIR;
+		
 		else return OPCAO_INVALIDA;
 	}
 }

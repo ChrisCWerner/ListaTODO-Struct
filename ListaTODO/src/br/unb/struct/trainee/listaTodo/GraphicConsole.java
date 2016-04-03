@@ -1,7 +1,7 @@
 package br.unb.struct.trainee.listaTodo;
 
-import javax.swing;
-import javax.accessibility;
+//import javax.swing;
+//import javax.accessibility;
 
 import java.io.*;
 

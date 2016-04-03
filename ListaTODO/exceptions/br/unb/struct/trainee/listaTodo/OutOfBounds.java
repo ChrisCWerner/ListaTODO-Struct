@@ -33,10 +33,12 @@ public class OutOfBounds extends Exception{
 	@Override
 	public String getMessage(){
 		switch(caso){
+			//OOB Out Of Bounds:
 			case "OOB":		return "\nLimites da lista extrapolados! Indice recebido = " 
 										+ indiceRecebido + ", indice esperado = [1, " 
 												+ indiceMaximo + "]\n";
 			
+			//LV Lista Vazia:
 			case "LV":		return "Lista vazia!";
 			
 			default:		return "";

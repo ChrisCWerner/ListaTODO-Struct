@@ -82,7 +82,7 @@ public class FileManager {
 			oos.close();
 		}
 		catch(Exception e){
-//			System.out.println("Erro ao salvar arquivo!");
+			System.out.println("Erro ao salvar arquivo!");
 		}
 	}
 	
@@ -93,9 +93,6 @@ public class FileManager {
 		}
 		else {
 			Lista lista = null;
-			/*
-			 * TODO	Consertar o método abrir lista
-			 */
 			try{
 				FileInputStream fin = new FileInputStream(pathLista(nome).toString());
 				ObjectInputStream ois = new ObjectInputStream(fin);
@@ -104,9 +101,9 @@ public class FileManager {
 						System.out.println("\n*\n*lista == null*\n*\n");
 				ois.close();
 			} catch(IOException e){
-				System.out.println("IOException!");
+				System.out.println("Erro ao abrir arquivo!");
 			} catch(ClassNotFoundException e){
-				System.out.println("ClassNotFoundException!");
+				
 			}
 			
 			return lista;

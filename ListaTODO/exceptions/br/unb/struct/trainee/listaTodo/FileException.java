@@ -31,7 +31,7 @@ public class FileException extends Exception {
 			//ECN Erro ao Criar Nova lista:
 			case "ECN":		return "Erro ao criar nova lista!";
 			
-			//EAL Erro ao abrir lista:
+			//EAL Erro ao Abrir Lista:
 			case "EAL":		return "Erro ao abrir lista!";
 			
 			//LNE Lista Nao Existe:
